@@ -15,9 +15,9 @@ Installing Nextcloud server on Raspberry Pi
 1. Install NextCloud using Snap
 1. Configure user profiles
 1. Install Veracrypt on client side across different supported platforms
-  1. Create encryption containers of pre-defined size (e.g. 2GB) to store confidential files
-  1. Add confidential files to Veracrypt on client side
-  1. Sync Veracrypt encrytion container to NextCloud server
+   1. Create encryption containers of pre-defined size (e.g. 2GB) to store confidential files
+   1. Add confidential files to Veracrypt on client side
+   1. Sync Veracrypt encrytion container to NextCloud server
 1. Sync NextCloud client side folders and files (including any Veracrypt encrytion containers) from various devices to NextCloud server
 
 
