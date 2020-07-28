@@ -5,7 +5,7 @@ Installing Nextcloud server on Raspberry Pi
 # Platform / Hardware / Software
 1. Raspbarry Pi 3B
 1. 32GB flash memory for NextCloud server storage media 
-1. NextCloud server
+1. Nextcloud server
 1. Raspbian Buster OS
 1. Veracrypt
 
@@ -21,11 +21,11 @@ Installing Nextcloud server on Raspberry Pi
 1. Install Uncomplicated Fire Wall (UFW) if it is not already installed using `sudo apt install ufw'
 1. Set up firewall (UFW) rules on Raspbarry Pi using https://github.com/ln-komandur/nextcloud-on-raspberry-pi/blob/master/ConfigureUFWRules.sh
 
-### NextCloud installation
+### Nextcloud installation
 1. Install the Snap Daemon if not installed already using `sudo apt install snapd`
 1. Install nextcloud and its dependencies (Apache web server, PHP etc.) using `sudo snap install nextcloud`
 
-## Preparing the storage media for cloud storage
+## Preparing the storage media for cloud data
 
 ### Mounting the media
 1. Plug in your chosen USB media (e.g. in my case a 32GB micro SD card plugged into a USB card reader adapter) to use for cloud data storage
@@ -38,7 +38,7 @@ Installing Nextcloud server on Raspberry Pi
       1. UUID=\<unique id of your media><tab\>_/media/mynxtcld_\<tab>_auto_\<tab>_nosuid,nodev,nofail_\<tab>_0_\<tab>_0_
 1. Mount the media with the command `sudo mount -a`
 
-### Pointing NextCloud to the media mount point
+### Pointing nextcloud to the media mount point
 
 1. Edit the `/var/snap/nextcloud/current/nextcloud/config/autoconfig.php` file to have `'directory'=>'/media/mynxtcld',`. Do not forget the trailing comma as this entry will be inside the `array(`
 1. Restart nextcloud server with `sudo snap restart nextcloud.php-fpm`
@@ -50,14 +50,21 @@ Installing Nextcloud server on Raspberry Pi
 1. Restart nextcloud server with `sudo snap restart nextcloud.php-fpm`
  
 
-## NextCloud client configuration
+## Nextcloud client configuration
 
-1. Configure user profiles
+1. Use a browser on a client PC to connect to your nextcloud server on the Raspberry Pi by using https://<RaspberryPi_IP_Addr>:441 for the URL
+1. Create a username and password, and click "Finish set-up"
+1. Login, create additional user accounts and configure their profiles
+1. Download and install nextcloud client on different client platforms
+1. Configure folders to sync with nextcloud server
+
+## Using Veracrypt for storing confidential files on nextcloud
+
 1. Install Veracrypt on client side across different supported platforms
    1. Create encryption containers of pre-defined size (e.g. 2GB) to store confidential files
    1. Add confidential files to Veracrypt on client side
-   1. Sync Veracrypt encrytion container to NextCloud server
-1. Sync NextCloud client side folders and files (including any Veracrypt encrytion containers) from various devices to NextCloud server
+   1. Sync Veracrypt encrytion container to nextcloud server
+1. Sync nextcloud client side folders and files (including any Veracrypt encrytion containers) from various devices to nextcloud server
 
 
 # Useful references
