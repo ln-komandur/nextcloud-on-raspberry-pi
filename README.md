@@ -43,7 +43,12 @@ Installing Nextcloud server on Raspberry Pi
 1. Edit the `/var/snap/nextcloud/current/nextcloud/config/autoconfig.php` file to have `'directory'=>'/media/mynxtcld',`. Do not forget the trailing comma as this entry will be inside the `array(`
 1. Restart nextcloud server with `sudo snap restart nextcloud.php-fpm`
 
-
+## Enabling https
+1. Find where nextcloud https is sitting in your Raspberry Pi by executing `whereis nextcloud.enable-https`
+1. Use a self signed certificate by executing `sudo /snap/bin/nextcloud.enable-https self-signed` 
+1. Set https port to 441, by executing `sudo snap set nextcloud ports.https=441` . Remember we already allowed port 441 in the UFW set-up.
+1. Restart nextcloud server with `sudo snap restart nextcloud.php-fpm`
+ 
 
 ## NextCloud client configuration
 
