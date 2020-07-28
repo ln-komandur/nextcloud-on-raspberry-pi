@@ -33,9 +33,9 @@ Installing Nextcloud server on Raspberry Pi
 1. Create a mount point for your media by creating a directory under the '/media' directory using `sudo mkdir /media/mynxtcld`
 1. Make yourself the owner for this folder using `sudo chown <your-user-id> -hR /media/mynxtcld/`
 1. Configure it to mount on start-up  
-   1. Find the UUID of the media by executing `sudo blkid | grep UUID=`
-   1. Add the line to the '/etc/fstab' file as
-      1. UUID=\<unique id of your media\>\<tab\>/media/mynxtcld\<tab\>auto\<tab\>nosuid,nodev,nofail\<tab\>0\<tab\>0
+   1. Find the UUID of the media by executing `sudo blkid | grep UUID=` or by using `ls -l /dev/disk/by-uuid`
+   1. Add the line to the '/etc/fstab' file as below, editing it with `sudo` privileges
+      1. UUID=\<unique id of your media><tab\>_/media/mynxtcld_\<tab>_auto_\<tab>_nosuid,nodev,nofail_\<tab>_0_\<tab>_0_
 1. Mount the media with the command `sudo mount -a`
 
 ### Pointing NextCloud to the media mount point
