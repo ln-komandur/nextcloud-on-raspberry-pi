@@ -18,6 +18,7 @@ Installing Nextcloud server on Raspberry Pi
 1. Enable SSH if it is not already enabled using one of the following methods
    1. From the terminal using `sudo raspi-config`, selecting "Interfaces" and "SSH"
    1. From the GUI clicking "Preferences -> Raspberry Pi Configuration -> Interfaces", selecting the "Enable" radio button next to SSH
+   ![Editing Raspbarry Pi config via GUI](https://github.com/ln-komandur/nextcloud-on-raspberry-pi/blob/master/RasPiConfig.png)
 1. Install Uncomplicated Fire Wall (UFW) if it is not already installed using `sudo apt install ufw`
 1. Set up firewall (UFW) rules on Raspbarry Pi using https://github.com/ln-komandur/nextcloud-on-raspberry-pi/blob/master/ConfigureUFWRules.sh
 
