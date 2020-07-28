@@ -10,9 +10,43 @@ Installing Nextcloud server on Raspberry Pi
 1. Veracrypt
 
 # Key Steps / Activities
+
+## Raspberry Pi Configuration
+
+### SSH & Firewall
+1. Update your Raspberry Pi before any installations using `sudo apt-get update`
+1. Enable SSH if it is not already enabled using one of the following methods
+   1. From the terminal using `sudo raspi-config`, selecting "Interfaces" and "SSH"
+   1. From the GUI clicking "Preferences -> Raspberry Pi Configuration -> Interfaces", selecting the "Enable" radio button next to SSH
+1. Install Uncomplicated Fire Wall (UFW) if it is not already installed using `sudo apt install ufw'
 1. Set up firewall (UFW) rules on Raspbarry Pi using https://github.com/ln-komandur/nextcloud-on-raspberry-pi/blob/master/ConfigureUFWRules.sh
-1. Prepare NextCloud storage media (e.g. 32GB flash memory)
-1. Install NextCloud using Snap
+
+### NextCloud installation
+1. Install the Snap Daemon if not installed already using `sudo apt install snapd`
+1. Install nextcloud and its dependencies (Apache web server, PHP etc.) using `sudo snap install nextcloud`
+
+## Preparing the storage media for cloud storage
+
+### Mounting the media
+1. Plug in your chosen USB media (e.g. in my case a 32GB micro SD card plugged into a USB card reader adapter) to use for cloud data storage
+1. Format it as "ext4" and label it (e.g. "mynxtcld") using "GParted" (under "System Tools" menu in the GUI)
+1. Create a mount point for your media by creating a directory under the '/media' directory using `sudo mkdir /media/mynxtcld`
+1. Make yourself the owner for this folder using `sudo chown <your-user-id> -hR /media/mynxtcld/`
+1. Configure it to mount on start-up  
+   1. Find the UUID of the media by executing `sudo blkid | grep UUID=`
+   1. Add the line to the '/etc/fstab' file as
+      1. UUID=\<unique id of your media\>\<tab\>/media/mynxtcld\<tab\>auto\<tab\>nosuid,nodev,nofail\<tab\>0\<tab\>0
+1. Mount the media with the command `sudo mount -a`
+
+### Pointing NextCloud to the media mount point
+
+1. Edit the `/var/snap/nextcloud/current/nextcloud/config/autoconfig.php` file to have `'directory'=>'/media/mynxtcld',`. Do not forget the trailing comma as this entry will be inside the `array(`
+1. Restart nextcloud server with `sudo snap restart nextcloud.php-fpm`
+
+
+
+## NextCloud client configuration
+
 1. Configure user profiles
 1. Install Veracrypt on client side across different supported platforms
    1. Create encryption containers of pre-defined size (e.g. 2GB) to store confidential files
