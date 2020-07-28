@@ -4,7 +4,7 @@ Installing Nextcloud server on Raspberry Pi
 
 # Platform / Hardware / Software
 1. Raspbarry Pi 3B
-1. 32GB flash memory for NextCloud server storage media 
+1. 32GB flash memory for Nextcloud server data storage media 
 1. Nextcloud server
 1. Raspbian Buster OS
 1. Veracrypt
